@@ -54,7 +54,7 @@ def get_technologies_from_description(description: str) -> str:
 
 def parse_vacancy(temp_vacancy: driver) -> Vacancy:
     info = temp_vacancy.find_element(By.CLASS_NAME, "job-list-item__job-info").text.split("·")
-    detail_description = temp_vacancy.find_element(By.CSS_SELECTOR, "div.job-list-item__description span").get_attribute("data-original-text").replace("<br>", " ") #TODO: find better way to get description
+    detail_description = temp_vacancy.find_element(By.CSS_SELECTOR, "div.job-list-item__description span").get_attribute("data-original-text").replace("<br>", " ")
     description = temp_vacancy.find_element(By.CLASS_NAME, "job-list-item__description").text
     experience, english = get_experience_from_additional_info(info)
     technologies = get_technologies_from_description(detail_description)
